@@ -44,29 +44,29 @@ function App({ navigation }) {
       <View style={styles.bodyContainer}>
         <View style={styles.gridRow}>
           <TouchableOpacity style={styles.icon} onPress={()=>{navigation.navigate('Info')}}>
-            <Image source={require('D:/Projects/ideathon/assets/icons/info.png')} style={styles.iconStyle} />
+            <Image source={require('../icons/info.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Info</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.icon}>
-            <Image source={require('D:/Projects/ideathon/assets/icons/account.png')} style={styles.iconStyle} />
+            <Image source={require('../icons/account.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.icon}>
-            <Image source={require('D:/Projects/ideathon/assets/icons/tuning.png')} style={styles.iconStyle} />
+            <Image source={require('../icons/tuning.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Tuning</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.gridRow}>
           <TouchableOpacity style={styles.icon}>
-            <Image source={require('D:/Projects/ideathon/assets/icons/fund.png')} style={styles.iconStyle} />
+            <Image source={require('../icons/fund.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Fund</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.icon}>
-            <Image source={require('D:/Projects/ideathon/assets/icons/report.png')} style={styles.iconStyle} />
+            <Image source={require('../icons/report.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Report</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.icon}>
-            <Image source={require('D:/Projects/ideathon/assets/icons/help.png')} style={styles.iconStyle} />
+            <Image source={require('../icons/help.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Help</Text>
           </TouchableOpacity>
         </View>
