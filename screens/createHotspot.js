@@ -3,10 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, PermissionsAndroid, Image } f
 import Geolocation from '@react-native-community/geolocation';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-//import Mapbox, { PointAnnotation } from '@rnmapbox/maps';
-
-
-//Mapbox.setAccessToken('pk.eyJ1Ijoic2FuamF5azAzIiwiYSI6ImNsZnhrNGJ4MTAxeGEzb21zNnZ2NHVidDMifQ.clgKR1Mv-trQQiSVYjlZdA');
 
 export default function BotOperation() {
 
@@ -45,36 +41,6 @@ export default function BotOperation() {
             setIsFetched(true);
         });
     }
-    const defaultStyle = {
-        version: 8,
-        name: 'Land',
-        sources: {
-            map: {
-                type: 'raster',
-                tiles: ['https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'],
-                tileSize: 256,
-                minzoom: 1,
-                maxzoom: 19,
-            },
-        },
-        layers: [
-            {
-                id: 'background',
-                type: 'background',
-                paint: {
-                    'background-color': '#f2efea',
-                },
-            },
-            {
-                id: 'map',
-                type: 'raster',
-                source: 'map',
-                paint: {
-                    'raster-fade-duration': 100,
-                },
-            },
-        ],
-    };
 
     useEffect(() => {
         requestLocationPermission();
@@ -90,25 +56,6 @@ export default function BotOperation() {
             </TouchableOpacity>
             <View style={styles.imgContainer}>
                 {isFetched && <Text style={{ color: '#000' }}>latitude: {latitude} longitude: {longitude}</Text>}
-                {/* <Mapbox.MapView 
-                    style={{ flex: 1, width: '100%', height: '100%' }}
-                    styleJSON={JSON.stringify(defaultStyle)}
-                    // zoomEnabled={true}
-                    // rotateEnabled={true}
-                    // pitchEnabled={true}
-                    // compassEnabled={true}
-                    logoEnabled={false}
-                /> */}
-                {/* <MapboxGL.MapViewNative style={styles.image}>
-                    <MapboxGL.Camera
-                        zoomLevel={6}
-                        centerCoordinate={[latitude, longitude]}
-                    />
-                    <MapboxGL.PointAnnotation
-                        id='point'
-                        coordinate={[latitude, longitude]}
-                    />
-                </MapboxGL.MapViewNative> */}
                 {/* <Image source={{uri:'https://assets-global.website-files.com/6050a76fa6a633d5d54ae714/609147088669907f652110b0_report-an-issue(about-maps).jpeg'}} style={styles.image} /> */}
             </View>
             <View style={styles.buttonContainer}>
