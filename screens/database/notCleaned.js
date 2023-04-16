@@ -48,7 +48,7 @@ function NotCleaned({navigation}) {
                     data={notCleanedList}
                     renderItem={({ item }) => (
                         <TouchableOpacity style={styles.item} 
-                        // onPress={()=>navigation.navigate('Homepage')}
+                        onPress={()=>navigation.navigate('Homepage')}
                         >
                             <Text style={styles.itemText}>{item.title}</Text>
                         </TouchableOpacity>
