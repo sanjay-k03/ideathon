@@ -4,7 +4,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { faHome, faSquarePlus, faDatabase, faUserGear, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import HomePage from './homepage/hpRoute';
-import CreateHotspot from './createHotspot';
+// import CreateHotspot from './createHotspot';
 import BotOperation from './botOperation/botOperation';
 import Database from './database/dataBase';
 import Organization from './organization/orgroute';
@@ -39,7 +39,7 @@ function App() {
             ),
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="Create Hotspot"
           component={CreateHotspot}
           options={{
@@ -47,7 +47,7 @@ function App() {
               <FontAwesomeIcon icon={faSquarePlus} color={color} size={20} />
             ),
           }}
-        />
+        /> */}
         <Tab.Screen
           name="Bot Operation"
           component={BotOperation}

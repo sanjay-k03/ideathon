@@ -36,36 +36,32 @@ function App({ navigation }) {
             </TouchableOpacity>
           )}
         />
-        {/* <Button
-          title="Go"
-          onPress={() => navigation.navigate('Database')}
-        /> */}
       </View>
       <View style={styles.bodyContainer}>
         <View style={styles.gridRow}>
-          <TouchableOpacity style={styles.icon} onPress={()=>{navigation.navigate('Info')}}>
+          <TouchableOpacity style={styles.icon} onPress={() => { navigation.navigate('Info') }}>
             <Image source={require('../icons/info.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Info</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.icon}>
+          <TouchableOpacity style={styles.icon} onPress={() => { navigation.navigate('Profile') }}>
             <Image source={require('../icons/account.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Profile</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.icon}>
-            <Image source={require('../icons/tuning.png')} style={styles.iconStyle} />
-            <Text style={styles.iconTxt}>Tuning</Text>
+          <TouchableOpacity style={styles.icon} onPress={() => { navigation.navigate('CreateHotspot') }}>
+            <Image source={require('../icons/add_location.png')} style={styles.iconStyle} />
+            <Text style={styles.iconTxt}> Create Hotspot</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.gridRow}>
-          <TouchableOpacity style={styles.icon}>
+          <TouchableOpacity style={styles.icon} onPress={() => { navigation.navigate('Fund') }}>
             <Image source={require('../icons/fund.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Fund</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.icon}>
+          <TouchableOpacity style={styles.icon} onPress={() => { navigation.navigate('Report') }}>
             <Image source={require('../icons/report.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Report</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.icon}>
+          <TouchableOpacity style={styles.icon} onPress={() => { navigation.navigate('Help') }}>
             <Image source={require('../icons/help.png')} style={styles.iconStyle} />
             <Text style={styles.iconTxt}>Help</Text>
           </TouchableOpacity>
@@ -94,7 +90,7 @@ const styles = StyleSheet.create({
   carouselContainer: {
     width: '100%',
     height: '35%',
-    marginTop:'1%',
+    marginTop: '1%',
   },
   image: {
     height: '90%',
@@ -127,7 +123,7 @@ const styles = StyleSheet.create({
     //backgroundColor: '#fff',
     //padding:'1%',
     margin: '5%',
-    borderRadius:20,
+    borderRadius: 20,
     width: ScreenWidth * 0.2,
   },
   announcementContainer: {
