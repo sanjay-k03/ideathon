@@ -19,6 +19,7 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.11",
     "@react-navigation/stack": "^6.3.16",
+    "@rnmapbox/maps": "^10.0.2",
     "react": "^18.2.0",
     "react-native": "0.71.3",
     "react-native-auto-carousel": "^1.0.8",
@@ -30,7 +31,8 @@
     "react-native-screens": "^3.20.0",
     "react-native-svg": "^13.8.0",
     "react-native-tab-view": "^3.5.1",
-    "react-native-vector-icons": "^9.2.0"
+    "react-native-vector-icons": "^9.2.0",
+    "react-native-web": "^0.19.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

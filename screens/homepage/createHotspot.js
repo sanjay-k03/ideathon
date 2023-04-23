@@ -1,49 +1,38 @@
 import React, { useEffect, useState, } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, PermissionsAndroid, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import Geolocation from '@react-native-community/geolocation';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import MapLibreGL from '@rnmapbox/maps';
 
-export default function BotOperation() {
+export default function CreateHotspot() {
+    MapLibreGL.setWellKnownTileServer(MapLibreGL.TileServers.MapLibre);
+    MapLibreGL.setAccessToken(null);
 
-    const requestLocationPermission = async () => {
-        try {
-            const granted = await PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-                {
-                    title: 'Location Access Needed',
-                    message: 'App needs access to your location.',
-                    buttonNeutral: 'Ask Me Later',
-                    buttonNegative: 'Cancel',
-                    buttonPositive: 'OK',
-                },
-            );
-            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                console.log('Permission Accessed');
-            } else {
-                console.log('Location permission denied');
-            }
-        } catch (err) {
-            console.warn("Warning Error: ", err);
-        }
-    };
-
-
-    const [latitude, setlatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
+    const [coords, setCoords] = useState([0, 0]);
     const [isFetched, setIsFetched] = useState(false);
 
     function fetchLocation() {
         Geolocation.getCurrentPosition(info => {
-            console.log("info: ", info); //{"coords": {"accuracy": 899.9990234375, "altitude": 0, "heading": 0, "latitude": 37.4226711, "longitude": -122.0849872, "speed": 0}, "extras": {"networkLocationType": "cell"}, "mocked": false, "timestamp": 1679938635639}
-            setlatitude(info.coords.latitude);
-            setLongitude(info.coords.longitude);
+            console.log("info: ", info); //{"coords": {"accuracy": 899.9990234375, "alt": 0, "heading": 0, "lat": 37.4226711, "long": -122.0849872, "speed": 0}, "extras": {"networkLocationType": "cell"}, "mocked": false, "timestamp": 1679938635639}
+            setCoords([info.coords.longitude, info.coords.latitude]);
+            console.log("Coords: ", coords);
             setIsFetched(true);
+        }, err => {
+            if (err.message === "No location provider available.") {
+                Alert.alert('Cannot fetch Location', 'Turn on Location', [
+                    {
+                        text: 'OK', onPress: () => {
+                            console.log('alert clossed');
+                            fetchLocation();
+                        }
+                    }
+                ]);
+            }
         });
     }
 
     useEffect(() => {
-        requestLocationPermission();
         fetchLocation();
     }, [])
 
@@ -55,8 +44,15 @@ export default function BotOperation() {
                 <Text style={{ color: '#434242' }}> Search</Text>
             </TouchableOpacity>
             <View style={styles.imgContainer}>
-                {isFetched && <Text style={{ color: '#000' }}>latitude: {latitude} longitude: {longitude}</Text>}
-                {/* <Image source={{uri:'https://assets-global.website-files.com/6050a76fa6a633d5d54ae714/609147088669907f652110b0_report-an-issue(about-maps).jpeg'}} style={styles.image} /> */}
+                {isFetched && <MapLibreGL.MapView
+                    style={{ flex: 1 }}
+                    styleURL={"https://api.maptiler.com/maps/streets-v2/style.json?key=rN4C1NoyCAA7EaM8knBS"}
+                    logoEnabled={false}
+                    attributionPosition={{ bottom: 5, right: 5 }}>
+                    <MapLibreGL.Camera
+                        defaultSettings={{ centerCoordinate: coords, zoomLevel: 13 }}
+                    />
+                </MapLibreGL.MapView>}
             </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button}>
@@ -85,9 +81,10 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     imgContainer: {
+        flex: 1,
         paddingTop: '7%',
         height: '80%',
-        width: '95%',
+        width: '100%',
         backgroundColor: 'grey'
     },
     image: {

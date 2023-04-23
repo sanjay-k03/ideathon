@@ -4,11 +4,10 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { faHome, faSquarePlus, faDatabase, faUserGear, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import HomePage from './homepage/hpRoute';
-// import CreateHotspot from './createHotspot';
 import BotOperation from './botOperation/botOperation';
 import Database from './database/dataBase';
 import Organization from './organization/orgroute';
-
+import CreateHotspot from './homepage/createHotspot';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -32,7 +31,7 @@ function App() {
         }}>
         <Tab.Screen
           name="HomePage"
-          component={HomePage}
+          component={CreateHotspot}
           options={{
             tabBarIcon: ({ color }) => (
               <FontAwesomeIcon icon={faHome} color={color} size={20} />
