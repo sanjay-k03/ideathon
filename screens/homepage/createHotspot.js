@@ -11,7 +11,7 @@ export default function CreateHotspot() {
 
     const [coords, setCoords] = useState([0, 0]);
     const [isFetched, setIsFetched] = useState(false);
-
+    
     function fetchLocation() {
         Geolocation.getCurrentPosition(info => {
             console.log("info: ", info); //{"coords": {"accuracy": 899.9990234375, "alt": 0, "heading": 0, "lat": 37.4226711, "long": -122.0849872, "speed": 0}, "extras": {"networkLocationType": "cell"}, "mocked": false, "timestamp": 1679938635639}
